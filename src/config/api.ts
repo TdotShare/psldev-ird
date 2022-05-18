@@ -1,0 +1,1 @@
+export const API  =  "https://mis-ird.rmuti.ac.th/service/psldev/public/api"
