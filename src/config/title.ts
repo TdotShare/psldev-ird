@@ -1,4 +1,4 @@
 export const TITLE  =  {
-    NameWeb : `แบบรายงานการพัฒนาบุคลากร`,
+    NameWeb : `ระบบรายงานการพัฒนาบุคลากร`,
     NameFull : `PSLDEV`,
 }

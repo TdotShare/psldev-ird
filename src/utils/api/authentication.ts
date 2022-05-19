@@ -4,10 +4,6 @@ import { APIAuthentication_data } from "../../model/Authentication";
 
 
 
-
-
-
-
 const getMe = async (token: String) => {
     const res = await axios.get<APIAuthentication_data>(`${API}/user/account/getme`, {
         headers: {
@@ -18,14 +14,20 @@ const getMe = async (token: String) => {
     return res.data
 }
 
-const getLogin = async (data: any) => {
+const getLogin = async () => {
     const res = await axios.get<APIAuthentication_data>(`${API}/auth/login`);
+    return res.data
+}
+
+const getLoginTest = async () => {
+    const res = await axios.get<APIAuthentication_data>(`${API}/auth/login_test`);
     return res.data
 }
 
 const exportedAPIAuthentication = {
     getMe,
-    getLogin
+    getLogin,
+    getLoginTest
 };
 
 export default exportedAPIAuthentication;

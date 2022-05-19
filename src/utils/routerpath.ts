@@ -1,6 +1,8 @@
 export const routerPath =  {
-    Development : '/development',
+    DocMe : '/docme',
     Signature : '/signature',
-    Certifier : '/Certifier',
+    Certifier : '/certifier',
     CertifyDoc  : '/certifydoc',
+    Document  : '/document',
+    Account  : '/account',
 }
