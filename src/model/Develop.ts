@@ -18,7 +18,7 @@ interface Develop {
 
 export type APIDevelop_data = {
     bypass: boolean,
-    data: Develop,
+    data: Develop[],
     status : string,
     message : string
 }

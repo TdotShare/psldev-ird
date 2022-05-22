@@ -7,7 +7,7 @@ interface TypeDevelop {
 
 export type APITypeDevelop_data = {
     bypass: boolean,
-    data: TypeDevelop,
+    data: TypeDevelop[],
     status : string,
     message : string
 }

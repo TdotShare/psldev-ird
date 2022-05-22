@@ -1,7 +1,18 @@
 import axios from "axios";
 import { API } from "../../config/api";
 import { APIDevelop_data } from "../../model/Develop";
+import { APITypeDevelop_data } from "../../model/TypeDevelop";
 
+
+const getTypeDevelop = async (token : String) => {
+    const res = await axios.get<APITypeDevelop_data>(`${API}/helpers/typedevelop` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    });
+
+    return res.data
+}
 
 const getDevelop =async (id : number , token : String) => {
     const res = await axios.get<APIDevelop_data>(`${API}/user/develop/${id}` , {
@@ -54,6 +65,7 @@ const getDevelopDelete =async (id : number , token : String) => {
 }
 
 const exportedAPIDevelop = {
+    getTypeDevelop,
     getDevelop,
     getDevelopAll,
     getDevelopCreate,

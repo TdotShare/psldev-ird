@@ -3,12 +3,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 type UserType = {
     user_id: number;
     user_uid: string
-    user_card_id : string;
-    user_firstname_th : string;
-    user_lastname_th : string;
-    user_email : string;
+    user_card_id: string;
+    user_firstname_th: string;
+    user_lastname_th: string;
+    user_email: string;
+    user_faculty : string;
+    user_sign_path: string;
+    user_sign_status: number;
     token: string,
-    role : string,
+    role: string,
 }
 
 export interface UserState {
@@ -18,7 +21,7 @@ export interface UserState {
 
 const initialState: UserState = {
     auth: false,
-    data: { user_id : 0 , user_uid : ""  , user_card_id : "", user_firstname_th : "" , user_lastname_th : "" , user_email : "" ,  token: "" , role : "" }
+    data: { user_id: 0, user_uid: "", user_card_id: "", user_firstname_th: "", user_lastname_th: "", user_email: "", user_faculty : "" , token: "", role: "", user_sign_path: "", user_sign_status: 0 }
 }
 
 export const userSlice = createSlice({
@@ -29,7 +32,7 @@ export const userSlice = createSlice({
             state.data = action.payload
         },
         deleteUser: (state) => {
-            state.data = { user_id : 0 , user_uid : ""  , user_card_id : "", user_firstname_th : "" , user_lastname_th : "" , user_email : "" ,  token: "" , role : "" }
+            state.data = { user_id: 0, user_uid: "", user_card_id: "", user_firstname_th: "", user_lastname_th: "", user_email: "", user_faculty : "" , token: "", role: "", user_sign_path: "", user_sign_status: 0 }
         },
         setLoginSuccess: (state) => {
             state.auth = true

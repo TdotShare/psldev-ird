@@ -11,7 +11,7 @@ interface Account {
     user_campus : string;
     user_email : string;
     user_sign_path : string;
-    user_sign_status : string;
+    user_sign_status : number;
     token : string;
     role : string;
 }

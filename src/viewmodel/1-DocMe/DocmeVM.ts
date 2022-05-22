@@ -1,8 +1,13 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { RootState } from "../../store/ConfigureStore"
 import { routerPath } from "../../utils/routerpath"
 
 
 export default function DocmeVM() {
+
+
+    const user = useSelector((state: RootState) => state.user.data)
 
     const [values] = useState({
         title: "เอกสารการพัฒนาของฉัน",
@@ -14,6 +19,7 @@ export default function DocmeVM() {
 
     return {
         ...values,
+        user
     }
 
 

@@ -1,7 +1,7 @@
 
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { addUser, setLoginSuccess } from '../../store/reducer/User';
+import { addUser, deleteUser, setLoginfail, setLoginSuccess } from '../../store/reducer/User';
 import { routerPath } from '../../utils/routerpath';
 import exportedSwal from '../../utils/swal';
 import React from 'react';
@@ -24,6 +24,9 @@ export default function LoginVM() {
 
     if (splitLocation.includes(`callback`)) {
       dataLoginRmuti()
+    }else{
+      dispatch(deleteUser())
+      dispatch(setLoginfail())
     }
 
     // eslint-disable-next-line
@@ -51,8 +54,11 @@ export default function LoginVM() {
           user_firstname_th: user.user_firstname_th,
           user_lastname_th: user.user_lastname_th,
           user_email: user.user_email,
+          user_sign_path : user.user_sign_path,
+          user_sign_status : user.user_sign_status,
+          user_faculty : user.user_faculty,
           token: user.token,
-          role: user.role
+          role: user.role,
         }))
 
       dispatch(setLoginSuccess())
