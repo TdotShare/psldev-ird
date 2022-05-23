@@ -59,12 +59,12 @@ function Certifier() {
                                                 {
                                                     viewModel.query_certifier_data.data?.data.map((el, index) => (
                                                         <tr key={index}>
-                                                            <th scope="col">{index + 1}</th>
-                                                            <th scope="col">{el.certifier_user_uid}</th>
-                                                            <th scope="col">{el.certifier_level}</th>
-                                                            <th scope="col">{el.certifier_status === 1 ? "เปิดการใช้งาน" : 'ปิดการใช้งาน'}</th>
-                                                            <th scope="col"><Button className='btn btn-block btn-primary' onClick={() => viewModel.actionUpdate_CertifierStatus(el.certifier_id)} ><i className="fas fa-sync"></i> แก้ไขสถานะ</Button></th>
-                                                            <th scope="col"><Button className='btn btn-block btn-danger' onClick={() => viewModel.actionDelete(el.certifier_id)}><i className="far fa-trash-alt"></i> ลบข้อมูล</Button></th>
+                                                            <th scope="row">{index + 1}</th>
+                                                            <td>{el.certifier_user_uid}</td>
+                                                            <td>{el.certifier_level}</td>
+                                                            <td>{el.certifier_status === 1 ? "เปิดการใช้งาน" : 'ปิดการใช้งาน'}</td>
+                                                            <td><Button className='btn btn-block btn-primary' onClick={() => viewModel.actionUpdate_CertifierStatus(el.certifier_id)} ><i className="fas fa-sync"></i> แก้ไขสถานะ</Button></td>
+                                                            <td><Button className='btn btn-block btn-danger' onClick={() => viewModel.actionDelete(el.certifier_id)}><i className="far fa-trash-alt"></i> ลบข้อมูล</Button></td>
                                                         </tr>
                                                     ))
                                                 }

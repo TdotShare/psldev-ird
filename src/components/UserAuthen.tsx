@@ -22,7 +22,6 @@ function UserAuthen({ children }: AppProps) {
     const query_user_data = useQuery<APIAuthentication_data, Error>('getAuthenMe', async () => exportedAPIAuthentication.getMe(user.token) , { keepPreviousData: false })
 
 
-
     if (query_user_data.isLoading) {
         <></>
     }

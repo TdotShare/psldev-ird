@@ -57,6 +57,7 @@ function Routers() {
                         <Route path={routerPath.Certifier} element={<UserAuthen children={<Certifier />} />} />
                         <Route path={`${routerPath.Certifier}/create`} element={<UserAuthen children={<CertifierCreate />} />} />
                         <Route path={routerPath.Document} element={<UserAuthen children={<Doc />} />} />
+                        <Route path="/error" element={<UserAuthen children={<>error</>} />} />
                         <Route path="/logout" element={<Logout />} />
                     </Route>
                 </Route>

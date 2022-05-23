@@ -12,6 +12,8 @@ interface Develop {
     develop_document : string;
     develop_detail : string;
     develop_feedback : string;
+    develop_status : number;
+    develop_status_name : string;
     token : string;
     role : string;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import ContentHeader from '../../components/content-header/ContentHeader'
 import LoadingData from '../../components/LoadingData'
@@ -10,6 +10,11 @@ import DocmeVM from '../../viewmodel/1-DocMe/DocmeVM'
 function Docme() {
 
     const viewModel = DocmeVM()
+
+
+    if (viewModel.query_develop_verify_data.isError) {
+        return <Navigate to={`/login`} />
+    }
 
     return (
         <div className="content-wrapper">
@@ -43,32 +48,55 @@ function Docme() {
 
                     <div style={{ paddingBottom: '1%' }}></div>
 
+
+
                     <div className='card'>
                         <div className='card-header'>
                             รายงานการพัฒนาบุคคลที่กำลังดำเนินการ
                         </div>
                         <div className='card-body'>
 
+                            {
+                                viewModel.query_develop_verify_data.isLoading ?
 
-                            <div className='table-responsive'>
-                                <table className="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">หัวข้อเรื่อง</th>
-                                            <th scope="col">ตามคำสั่ง/หนังสือ</th>
-                                            <th scope="col">ระหว่างวันที่</th>
-                                            <th scope="col">ถึงที่</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                    <LoadingData />
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                    :
+
+                                    <div className='table-responsive'>
+                                        <table className="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">หัวข้อเรื่อง</th>
+                                                    <th scope="col">ตามคำสั่ง/หนังสือ</th>
+                                                    <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
+                                                    <th scope="col">สถานะ</th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                    viewModel.query_develop_verify_data.data?.data.map((el, index) => (
+                                                        <tr key={index}>
+                                                            <th scope="col">{index + 1}</th>
+                                                            <td>{el.develop_title}</td>
+                                                            <td>{el.develop_number}</td>
+                                                            <td>{el.develop_sdete} - {el.develop_edete}</td>
+                                                            <td>{el.develop_status_name}</td>
+                                                            <td><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></td>
+                                                            <td><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></td>
+                                                        </tr>
+                                                    ))
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                            }
+
 
 
                         </div>
@@ -86,10 +114,8 @@ function Docme() {
                                             <th scope="col">#</th>
                                             <th scope="col">หัวข้อเรื่อง</th>
                                             <th scope="col">ตามคำสั่ง/หนังสือ</th>
-                                            <th scope="col">ระหว่างวันที่</th>
-                                            <th scope="col">ถึงที่</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
+                                            <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
+                                            <th scope="col">สถานะ</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
