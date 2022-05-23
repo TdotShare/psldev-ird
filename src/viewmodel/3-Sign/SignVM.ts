@@ -55,7 +55,6 @@ export default function SignVM() {
         event.preventDefault();
         const formdata = new FormData(event.currentTarget);
 
-
         console.log(formdata.get('data_correct'))
         console.log(formdata.get('data_agree'))
 

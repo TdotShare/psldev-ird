@@ -25,6 +25,16 @@ const getCertifierCreate =async (data : any , token : String) => {
     return res.data
 }
 
+const getCertifierUpdateStatus =async (id : number , token : String) => {
+    const res = await axios.get<APICertifier_data>(`${API}/admin/certifier/update_status/${id}` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    });
+
+    return res.data
+}
+
 const getCertifierDelete =async (id : number , token : String) => {
     const res = await axios.get<APICertifier_data>(`${API}/admin/certifier/delete/${id}` , {
         headers: {
@@ -38,7 +48,8 @@ const getCertifierDelete =async (id : number , token : String) => {
 const exportedAPICertifier = {
     getCertifierAll,
     getCertifierCreate,
-    getCertifierDelete
+    getCertifierDelete,
+    getCertifierUpdateStatus
 };
 
 export default exportedAPICertifier;
