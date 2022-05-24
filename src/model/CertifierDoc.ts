@@ -21,6 +21,7 @@ interface CertifierDoc {
     user_prename : string;
     user_firstname_th : string;
     user_lastname_th : string;
+    certifier_level : number;
 }
 
 export type APICertifierDoc_data = {

@@ -80,6 +80,7 @@ function Docme() {
                                                     <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
                                                     <th scope="col">สถานะ</th>
                                                     <th scope="col"></th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -91,6 +92,7 @@ function Docme() {
                                                             <td>{el.develop_number}</td>
                                                             <td>{el.develop_sdete} - {el.develop_edete}</td>
                                                             <td>{el.develop_status_name}</td>
+                                                            <td><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></td>
                                                             <td><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></td>
                                                         </tr>
                                                     ))

@@ -3,23 +3,31 @@ import { Link, Navigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import ContentHeader from '../../components/content-header/ContentHeader'
 import LoadingData from '../../components/LoadingData'
-import Pagination from '../../components/Pagination'
-import { API } from '../../config/api'
 import CertifydocUpdateVM from '../../viewmodel/2-Certifydoc/CertifydocUpdateVM'
 
 function CertifydocUpdate() {
 
+
     const viewModel = CertifydocUpdateVM()
 
+    React.useEffect(() => {
+        return () => {
+            viewModel.queryClient.removeQueries('getDocUser')
+        }
+        // eslint-disable-next-line
+    }, [])
+
     if (viewModel.doc_user.isError) {
-        return <Navigate to={`/login`} />
+        return <Navigate to={`/error`} />
     }
 
     if (!viewModel.doc_user.isLoading) {
         if (viewModel.doc_user.data?.bypass === false) {
-            return <Navigate to={`/login`} />
+            return <Navigate to={`/error`} />
         }
     }
+
+
 
     return (
         <div className="content-wrapper">
@@ -130,7 +138,7 @@ function CertifydocUpdate() {
 
                                             <div className="form-group col-md-12">
                                                 <label >(อื่นๆ) โปรดระบุ</label>
-                                                <input type="text" name='develop_utilization_other'  defaultValue={`${viewModel.doc_user.data?.data.develop_utilization_other !== null ? viewModel.doc_user.data?.data.develop_utilization_other  : '' }`} className="form-control" readOnly />
+                                                <input type="text" name='develop_utilization_other' defaultValue={`${viewModel.doc_user.data?.data.develop_utilization_other !== null ? viewModel.doc_user.data?.data.develop_utilization_other : ''}`} className="form-control" readOnly />
                                             </div>
                                         </div>
 
@@ -165,13 +173,20 @@ function CertifydocUpdate() {
                                     </div>
                                 </div>
 
+                                {
+                                    viewModel.doc_user.data?.data.certifier_level === 1 ?
 
-                                <div className='row'>
-                                    <div className='col-md-6'><Button className='btn btn-block btn-success'><i className="fas fa-file-signature"></i> ลงนามเอกสาร</Button></div>
-                                    <div className='col-md-6'><Button className='btn btn-block btn-warning'><i className="fas fa-edit"></i> ให้ผู้ส่งเอกสารแก้ไขเอกสารอีกครั้ง</Button></div>
-                                </div>
+                                        <div className='row'>
+                                            <div className='col-md-6'><Button className='btn btn-block btn-success' onClick={() => viewModel.actionSgin(viewModel.id)} ><i className="fas fa-file-signature"></i> ลงนามเอกสาร</Button></div>
+                                            <div className='col-md-6'><Button className='btn btn-block btn-warning' onClick={() => viewModel.actionEditDoc(viewModel.id)}><i className="fas fa-edit"></i> ให้ผู้ส่งเอกสารแก้ไขเอกสารอีกครั้ง</Button></div>
+                                        </div>
 
-                                <div style={{marginBottom : `1%`}}></div>
+                                        :
+
+                                        <Button className='btn btn-block btn-success'><i className="fas fa-file-signature" onClick={() => viewModel.actionSgin(viewModel.id)}></i> ลงนามเอกสาร</Button>
+                                }
+
+                                <div style={{ marginBottom: `1%` }}></div>
 
 
                             </>

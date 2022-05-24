@@ -29,13 +29,7 @@ import UserAuthen from '../components/UserAuthen';
 import DocmeCreate from '../screen/1-Docme/DocmeCreate';
 import CertifierCreate from '../screen/admin/1-Certifier/CertifierCreate';
 import CertifydocUpdate from '../screen/2-Certifydoc/CertifydocUpdate';
-
-
-
-
-
-
-
+import Error404 from '../screen/error/Error';
 
 
 function Routers() {
@@ -59,8 +53,9 @@ function Routers() {
                         <Route path={routerPath.Certifier} element={<UserAuthen children={<Certifier />} />} />
                         <Route path={`${routerPath.Certifier}/create`} element={<UserAuthen children={<CertifierCreate />} />} />
                         <Route path={routerPath.Document} element={<UserAuthen children={<Doc />} />} />
-                        <Route path="/error" element={<UserAuthen children={<>error</>} />} />
+                        <Route path="/error" element={<UserAuthen children={<Error404 />} />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route path="*" element={<UserAuthen children={<Error404 />} />} />
                     </Route>
                 </Route>
 
@@ -69,18 +64,6 @@ function Routers() {
 
         </BrowserRouter>
     )
-}
-
-
-function RequireAuth({ children }: { children: JSX.Element }) {
-
-    const data = useSelector((state: RootState) => state.user)
-
-    if (data.data.role !== 'admin') {
-        return <Navigate to="/login" />;
-    }
-
-    return children;
 }
 
 export default Routers
