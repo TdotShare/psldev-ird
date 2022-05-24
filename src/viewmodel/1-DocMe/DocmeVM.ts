@@ -23,11 +23,13 @@ export default function DocmeVM() {
 
 
     const query_develop_verify_data = useQuery<APIDevelop_data, Error>('getDevelop', async () => exportedAPIDevelop.getDevelopAll(user.token))
+    const query_develop_history_data = useQuery<APIDevelop_data, Error>('getDevelopHistory', async () => exportedAPIDevelop.getDevelopHistory(user.token))
 
     return {
         ...values,
         user,
         query_develop_verify_data,
+        query_develop_history_data
     }
 
 

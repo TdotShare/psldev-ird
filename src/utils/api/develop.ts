@@ -34,6 +34,16 @@ const getDevelopAll =async (token : String) => {
     return res.data
 }
 
+const getDevelopHistory =async (token : String) => {
+    const res = await axios.get<APIDevelop_data>(`${API}/user/develop/get/history` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    });
+
+    return res.data
+}
+
 const getDevelopCreate =async (data : any , token : String) => {
     const res = await axios.post<APIDevelop_data>(`${API}/user/develop/create`, data , {
         headers: {
@@ -68,6 +78,7 @@ const exportedAPIDevelop = {
     getTypeDevelop,
     getDevelop,
     getDevelopAll,
+    getDevelopHistory,
     getDevelopCreate,
     getDevelopUpdate,
     getDevelopDelete

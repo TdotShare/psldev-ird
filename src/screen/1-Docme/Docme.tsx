@@ -12,9 +12,16 @@ function Docme() {
     const viewModel = DocmeVM()
 
 
-    if (viewModel.query_develop_verify_data.isError) {
+    if (viewModel.query_develop_verify_data.isError || viewModel.query_develop_history_data.isError) {
         return <Navigate to={`/login`} />
     }
+
+    if (!viewModel.query_develop_verify_data.isLoading || !viewModel.query_develop_history_data.isLoading) {
+        if (viewModel.query_develop_verify_data.data?.bypass === false || viewModel.query_develop_history_data.data?.bypass === false) {
+            return <Navigate to={`/login`} />
+        }
+    }
+
 
     return (
         <div className="content-wrapper">
@@ -73,7 +80,6 @@ function Docme() {
                                                     <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
                                                     <th scope="col">สถานะ</th>
                                                     <th scope="col"></th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -85,7 +91,6 @@ function Docme() {
                                                             <td>{el.develop_number}</td>
                                                             <td>{el.develop_sdete} - {el.develop_edete}</td>
                                                             <td>{el.develop_status_name}</td>
-                                                            <td><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></td>
                                                             <td><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></td>
                                                         </tr>
                                                     ))
@@ -120,6 +125,18 @@ function Docme() {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {
+                                            viewModel.query_develop_history_data.data?.data.map((el, index) => (
+                                                <tr key={index}>
+                                                    <th scope="col">{index + 1}</th>
+                                                    <td>{el.develop_title}</td>
+                                                    <td>{el.develop_number}</td>
+                                                    <td>{el.develop_sdete} - {el.develop_edete}</td>
+                                                    <td>{el.develop_status_name}</td>
+                                                    <td><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></td>
+                                                </tr>
+                                            ))
+                                        }
 
                                     </tbody>
                                 </table>

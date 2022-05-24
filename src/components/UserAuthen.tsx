@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import { APIAuthentication_data } from '../model/Authentication';
@@ -14,6 +14,8 @@ type AppProps = {
 
 function UserAuthen({ children }: AppProps) {
 
+    const queryClient = useQueryClient()
+
     const dispatch = useDispatch()
 
     const user = useSelector((state: RootState) => state.user.data)
@@ -27,6 +29,7 @@ function UserAuthen({ children }: AppProps) {
     }
 
     if (query_user_data.data?.bypass === false) {
+        queryClient.invalidateQueries()
         dispatch(deleteUser())
         dispatch(setLoginfail())
         exportedSwal.actionInfo("ระยะเวลาการใช้งานในระบบ หมดแล้วกรุณาเข้าสู่ระบบใหม่อีกครั้ง !")

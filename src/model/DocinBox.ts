@@ -1,4 +1,4 @@
-interface Develop {
+interface DocinBox {
     develop_id   : number;
     develop_user_id: number;
     develop_type_go_id : number;
@@ -14,11 +14,24 @@ interface Develop {
     develop_feedback : string;
     develop_status : number;
     develop_status_name : string;
+    sign_id : number;
+    sign_develop_id   : number;
+    sign_certifier_uid: number;
+    sign_status : number;
 }
 
-export type APIDevelop_data = {
+export type APIDocinBox_data = {
     bypass: boolean,
-    data: Develop[],
+    data: {
+        current_page : number,
+        data : DocinBox[],
+        first_page_url : string,
+        from : number,
+        last_page : number,
+        per_page : number,
+        to : number,
+        total : number
+    },
     status : string,
     message : string
 }

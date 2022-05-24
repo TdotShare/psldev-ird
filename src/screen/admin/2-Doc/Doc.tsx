@@ -25,9 +25,7 @@ function Doc() {
 
                     <div className='card'>
                         <div className='card-body'>
-
-
-
+                            <div className="alert alert-success" role="alert">รอการอัปเดตครั้งต่อไป !</div>
                         </div>
                     </div>
 

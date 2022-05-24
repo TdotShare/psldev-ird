@@ -2,6 +2,7 @@ interface User {
     user_id : number;
     user_uid: string;
     user_card_id : string;
+    user_prename : string;
     user_firstname_th : string;
     user_lastname_th : string;
     user_firstname_en : string;
@@ -14,9 +15,18 @@ interface User {
     user_sign_status : string;
 }
 
-export type APITypeDevelop_data = {
+export type APIAccount_data = {
     bypass: boolean,
-    data: User,
+    data: {
+        current_page : number,
+        data : User[],
+        first_page_url : string,
+        from : number,
+        last_page : number,
+        per_page : number,
+        to : number,
+        total : number
+    },
     status : string,
     message : string
 }

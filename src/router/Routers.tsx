@@ -28,6 +28,7 @@ import Doc from '../screen/admin/2-Doc/Doc';
 import UserAuthen from '../components/UserAuthen';
 import DocmeCreate from '../screen/1-Docme/DocmeCreate';
 import CertifierCreate from '../screen/admin/1-Certifier/CertifierCreate';
+import CertifydocUpdate from '../screen/2-Certifydoc/CertifydocUpdate';
 
 
 
@@ -52,6 +53,7 @@ function Routers() {
                         <Route path={routerPath.DocMe} element={<UserAuthen children={<Docme />} />} />
                         <Route path={`${routerPath.DocMe}/create`} element={<UserAuthen children={<DocmeCreate />} />} />
                         <Route path={routerPath.CertifyDoc} element={<UserAuthen children={<Certifydoc />} />} />
+                        <Route path={`${routerPath.CertifyDoc}/update/:id`} element={<UserAuthen children={<CertifydocUpdate />} />} />
                         <Route path={routerPath.Signature} element={<UserAuthen children={<Sign />} />} />
                         <Route path={routerPath.Account} element={<UserAuthen children={<Account />} />} />
                         <Route path={routerPath.Certifier} element={<UserAuthen children={<Certifier />} />} />

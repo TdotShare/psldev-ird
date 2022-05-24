@@ -5,8 +5,6 @@ interface Certifier {
     certifier_status : number;
     certifier_create_at : string;
     certifier_update_at : string;
-    token : string;
-    role : string;
 }
 
 export type APICertifier_data = {
