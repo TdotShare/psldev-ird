@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API } from "../../config/api";
-import { APIDevelop_data } from "../../model/Develop";
+import { APIDevelop_data, APIDevelop_first_data } from "../../model/Develop";
 import { APITypeDevelop_data } from "../../model/TypeDevelop";
 
 
@@ -15,7 +15,7 @@ const getTypeDevelop = async (token : String) => {
 }
 
 const getDevelop =async (id : number , token : String) => {
-    const res = await axios.get<APIDevelop_data>(`${API}/user/develop/${id}` , {
+    const res = await axios.get<APIDevelop_first_data>(`${API}/user/develop/${id}` , {
         headers: {
             'Authorization': `Bearer ${token}`
         },
@@ -64,8 +64,18 @@ const getDevelopUpdate = async (data : any , token : String) => {
     return res.data
 }
 
-const getDevelopDelete =async (id : number , token : String) => {
+const getDevelopDelete = async (id : number , token : String) => {
     const res = await axios.get<APIDevelop_data>(`${API}/user/develop/delete/${id}` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    });
+
+    return res.data
+}
+
+const getDevelopCancel = async (id : number , token : String) => {
+    const res = await axios.get<APIDevelop_data>(`${API}/user/develop/cancel/${id}` , {
         headers: {
             'Authorization': `Bearer ${token}`
         },
@@ -81,7 +91,8 @@ const exportedAPIDevelop = {
     getDevelopHistory,
     getDevelopCreate,
     getDevelopUpdate,
-    getDevelopDelete
+    getDevelopDelete,
+    getDevelopCancel
 };
 
 export default exportedAPIDevelop;

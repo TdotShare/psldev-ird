@@ -9,6 +9,9 @@ interface Develop {
     develop_sdete : string;
     develop_edete : string;
     develop_location : string;
+    develop_op_agency : string;
+    develop_utilization : number;
+    develop_utilization_other : string;
     develop_document : string;
     develop_detail : string;
     develop_feedback : string;
@@ -19,6 +22,13 @@ interface Develop {
 export type APIDevelop_data = {
     bypass: boolean,
     data: Develop[],
+    status : string,
+    message : string
+}
+
+export type APIDevelop_first_data = {
+    bypass: boolean,
+    data: Develop,
     status : string,
     message : string
 }

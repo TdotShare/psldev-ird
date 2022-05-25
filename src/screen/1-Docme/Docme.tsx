@@ -81,6 +81,7 @@ function Docme() {
                                                     <th scope="col">สถานะ</th>
                                                     <th scope="col"></th>
                                                     <th scope="col"></th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -92,8 +93,9 @@ function Docme() {
                                                             <td>{el.develop_number}</td>
                                                             <td>{el.develop_sdete} - {el.develop_edete}</td>
                                                             <td>{el.develop_status_name}</td>
-                                                            <td><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></td>
+                                                            <td><Link to={`${routerPath.DocMe}/update/${el.develop_id}`}><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></Link></td>
                                                             <td><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></td>
+                                                            <td><Button onClick={() => viewModel.actionCancel(el.develop_id)} className='btn btn-danger btn-block' disabled={[0 , 1].includes(el.develop_status) ? false : true}><i className="fas fa-ban"></i> ยกเลิกรายการ</Button></td>
                                                         </tr>
                                                     ))
                                                 }
