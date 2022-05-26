@@ -32,3 +32,19 @@ export type APIDevelop_first_data = {
     status : string,
     message : string
 }
+
+export type APIDevelop_page_data = {
+    bypass: boolean,
+    data: {
+        current_page : number,
+        data : Develop[],
+        first_page_url : string,
+        from : number,
+        last_page : number,
+        per_page : number,
+        to : number,
+        total : number
+    },
+    status : string,
+    message : string
+}

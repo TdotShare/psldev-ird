@@ -90,6 +90,7 @@ export default function DocmeUpdateVM() {
 
 
         let data = {
+            develop_id: id,
             develop_position: formdata.get('develop_position'),
             develop_type_go_id: formdata.get('develop_type_go_id'),
             develop_type_admit_id: formdata.get('develop_type_admit_id'),
@@ -108,14 +109,14 @@ export default function DocmeUpdateVM() {
 
         console.log(data)
 
-        // let res = await exportedAPIDevelop.getDevelopUpdate(data , user.token)
+        let res = await exportedAPIDevelop.getDevelopUpdate(data , user.token)
 
-        // if(res.bypass){
-        //     exportedSwal.actionSuccess(`แก้ไขแบบรายงานการพัฒนาบุคคล เรียบร้อย !`)
-        //     navigate(routerPath.DocMe)
-        // }else{
-        //     exportedSwal.actionInfo(res.message)
-        // }
+        if(res.bypass){
+            exportedSwal.actionSuccess(`แก้ไขแบบรายงานการพัฒนาบุคคล เรียบร้อย !`)
+            navigate(routerPath.DocMe)
+        }else{
+            exportedSwal.actionInfo(res.message)
+        }
     }
 
     const actionSetDayRange = () => {

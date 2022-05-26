@@ -24,7 +24,9 @@ export default function DocmeCreateVM() {
     });
 
     const query_typedevelop_data = useQuery<APITypeDevelop_data, Error>('getTypeDevelop', async () => exportedAPIDevelop.getTypeDevelop(user.token))
-    const query_certifier_data = useQuery<APICertifier_data, Error>('getCertifierLevel', async () => exportedAPICertifierDoc.getCertifierLevel( 1 , user.token))
+    const query_certifier1st_data = useQuery<APICertifier_data, Error>('getCertifierLevel1st', async () => exportedAPICertifierDoc.getCertifierLevel( 1 , user.token))
+    const query_certifier2st_data = useQuery<APICertifier_data, Error>('getCertifierLevel2st', async () => exportedAPICertifierDoc.getCertifierLevel( 2 , user.token))
+    const query_certifier3st_data = useQuery<APICertifier_data, Error>('getCertifierLevel3st', async () => exportedAPICertifierDoc.getCertifierLevel( 3 , user.token))
 
     const [values] = useState({
         title: "เอกสารการพัฒนาของฉัน - สร้าง",
@@ -77,7 +79,17 @@ export default function DocmeCreateVM() {
             return
         }
 
-        if (!formdata.get('sign_certifier_uid')) {
+        if (!formdata.get('sign_certifier_1st_uid')) {
+            exportedSwal.actionInfo('กรุณาเลือกผู้บังคับบัญชาที่จะส่งเอกสาร !')
+            return
+        }
+
+        if (!formdata.get('sign_certifier_2st_uid')) {
+            exportedSwal.actionInfo('กรุณาเลือกผู้บังคับบัญชาที่จะส่งเอกสาร !')
+            return
+        }
+
+        if (!formdata.get('sign_certifier_3st_uid')) {
             exportedSwal.actionInfo('กรุณาเลือกผู้บังคับบัญชาที่จะส่งเอกสาร !')
             return
         }
@@ -98,7 +110,9 @@ export default function DocmeCreateVM() {
             develop_document: formdata.get('develop_document'),
             develop_detail: formdata.get('develop_detail'),
             develop_feedback: formdata.get('develop_feedback'),
-            sign_certifier_uid: formdata.get('sign_certifier_uid'),
+            sign_certifier_1st_uid: formdata.get('sign_certifier_1st_uid'),
+            sign_certifier_2st_uid: formdata.get('sign_certifier_2st_uid'),
+            sign_certifier_3st_uid: formdata.get('sign_certifier_3st_uid'),
         }
 
         let res = await exportedAPIDevelop.getDevelopCreate(data , user.token)
@@ -116,7 +130,9 @@ export default function DocmeCreateVM() {
         ...values,
         user,
         query_typedevelop_data,
-        query_certifier_data,
+        query_certifier1st_data,
+        query_certifier2st_data,
+        query_certifier3st_data,
         selectedDayRange,
         setSelectedDayRange,
         submitFormDocme

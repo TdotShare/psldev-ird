@@ -30,11 +30,15 @@ function CertifierCreate() {
 
                             <form onSubmit={viewModel.submitFormCertifier} >
                                 <div className="form-row">
-                                    <div className="form-group col-md-6">
+                                    <div className="form-group col-md">
                                         <label >account uid (บัญชีอินเตอร์เน็ตมหาวิทยาลัย)</label>
                                         <input type="text" name='certifier_user_uid'  className="form-control" placeholder='jirayu.co' />
                                     </div>
-                                    <div className="form-group col-md-6">
+                                    <div className="form-group col-md">
+                                        <label >ชื่อตำแหน่ง</label>
+                                        <input type="text" name='certifier_position'  className="form-control"  />
+                                    </div>
+                                    <div className="form-group col-md">
                                         <label >ระดับ</label>
                                         <select name='certifier_level' className="custom-select" defaultValue={""} >
                                             <option value={""}>กรุณาเลือกระดับ</option>

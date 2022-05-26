@@ -202,7 +202,7 @@ function DocmeCreate() {
 
                                             <div className="form-group col-md-12">
                                                 <label >(อื่นๆ) โปรดระบุ</label>
-                                                <input type="text" name='develop_utilization_other' className="form-control" />
+                                                <input type="text" name='develop_utilization_other' maxLength={20} className="form-control" />
                                             </div>
 
 
@@ -224,7 +224,7 @@ function DocmeCreate() {
                                 เอกสาร/ ตำรา/ คู่มือ
                             </div>
                             <div className='card-body'>
-                                <textarea className="form-control" name='develop_document' rows={3}></textarea>
+                                <textarea className="form-control" maxLength={50} name='develop_document' rows={3}></textarea>
                             </div>
                         </div>
 
@@ -233,7 +233,7 @@ function DocmeCreate() {
                                 รายละเอียดการไปศึกษา ฝึกอบรม ประชุม สัมมนา ฯลฯ ให้เขียนรายละเอียดโดยบรรยายสิ่งที่ได้สังเกตรู้เห็น หรือได้รับถ่ายทอดมาให้ชัดเจน
                             </div>
                             <div className='card-body'>
-                                <textarea className="form-control" name='develop_detail' rows={3}></textarea>
+                                <textarea className="form-control"  maxLength={50} name='develop_detail' rows={3}></textarea>
                             </div>
                         </div>
 
@@ -242,38 +242,83 @@ function DocmeCreate() {
                                 สรุปข้อคิดเห็น/ข้อเสนอแนะ
                             </div>
                             <div className='card-body'>
-                                <textarea className="form-control" name='develop_feedback' rows={3}></textarea>
+                                <textarea className="form-control" name='develop_feedback' maxLength={100} rows={3}></textarea>
                             </div>
                         </div>
 
-                        {
-                            viewModel.query_certifier_data.isLoading ?
 
-                                <LoadingData />
 
-                                :
+                        <div className='card'>
+                            <div className='card-header'>
+                                ความเห็นผู้บังคับบัญชา (ผู้รับรองเอกสาร)
+                            </div>
+                            <div className='card-body'>
+                                <div className='form-row'>
 
-                                <div className='card'>
-                                    <div className='card-header'>
-                                        ความเห็นผู้บังคับบัญชา
-                                    </div>
-                                    <div className='card-body'>
-                                        <div className='form-row'>
+                                    {
+                                        viewModel.query_certifier1st_data.isLoading ?
+
+                                            <LoadingData />
+
+                                            :
+
                                             <div className="form-group col-md">
-                                                <label >เลือกผู้บังคับบัญชาที่จะส่ง (ผู้รับรองเอกสารตามลำดับชั้น)</label>
-                                                <select className="custom-select" name='sign_certifier_uid' defaultValue={""} >
-                                                    <option value={""}>กรุณาเลือกผู้บังคับบัญชาที่จะส่ง</option>
+                                                <label >เลือกผู้บังคับบัญชาระดับหัวหน้าสำนักงาน</label>
+                                                <select className="custom-select" name='sign_certifier_1st_uid' defaultValue={""} >
+                                                    <option value={""}>กรุณาเลือกผู้รับรองเอกสาร</option>
                                                     {
-                                                        viewModel.query_certifier_data.data?.data.map((el, index) => (
-                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid}</option>
+                                                        viewModel.query_certifier1st_data.data?.data.map((el, index) => (
+                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid} ({el.user_prename}{el.user_firstname_th} {el.user_lastname_th})</option>
                                                         ))
                                                     }
                                                 </select>
                                             </div>
-                                        </div>
-                                    </div>
+                                    }
+
+                                    {
+                                        viewModel.query_certifier2st_data.isLoading ?
+
+                                            <LoadingData />
+
+                                            :
+
+                                            <div className="form-group col-md">
+                                                <label >เลือกผู้บังคับบัญชาระดับหัวหน้าฝ่าย</label>
+                                                <select className="custom-select" name='sign_certifier_2st_uid' defaultValue={""} >
+                                                    <option value={""}>กรุณาเลือกผู้รับรองเอกสาร</option>
+                                                    {
+                                                        viewModel.query_certifier2st_data.data?.data.map((el, index) => (
+                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid} {el.user_uid ? `(${el.user_prename}${el.user_firstname_th} ${el.user_lastname_th})` : ""}</option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
+                                    }
+
+                                    {
+                                        viewModel.query_certifier3st_data.isLoading ?
+
+                                            <LoadingData />
+
+                                            :
+
+                                            <div className="form-group col-md">
+                                                <label >เลือกผู้บังคับบัญชาระดับผู้อำนวยการ</label>
+                                                <select className="custom-select" name='sign_certifier_3st_uid' defaultValue={""} >
+                                                    <option value={""}>กรุณาเลือกผู้รับรองเอกสาร</option>
+                                                    {
+                                                        viewModel.query_certifier3st_data.data?.data.map((el, index) => (
+                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid} ({el.user_prename}{el.user_firstname_th} {el.user_lastname_th})</option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
+                                    }
+
                                 </div>
-                        }
+                            </div>
+                        </div>
+
 
 
                         <Button className='btn btn-block btn-success'>สร้างแบบรายการ</Button>

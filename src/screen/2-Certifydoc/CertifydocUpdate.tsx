@@ -177,13 +177,13 @@ function CertifydocUpdate() {
                                     viewModel.doc_user.data?.data.certifier_level === 1 ?
 
                                         <div className='row'>
-                                            <div className='col-md-6'><Button className='btn btn-block btn-success' onClick={() => viewModel.actionSgin(viewModel.id)} ><i className="fas fa-file-signature"></i> ลงนามเอกสาร</Button></div>
+                                            <div className='col-md-6'><Button className='btn btn-block btn-success' onClick={() => viewModel.actionSgin(viewModel.doc_user.data?.data.develop_id!)} ><i className="fas fa-file-signature"></i> ลงนามเอกสาร</Button></div>
                                             <div className='col-md-6'><Button className='btn btn-block btn-warning' onClick={() => viewModel.actionEditDoc(viewModel.id)}><i className="fas fa-edit"></i> ให้ผู้ส่งเอกสารแก้ไขเอกสารอีกครั้ง</Button></div>
                                         </div>
 
                                         :
 
-                                        <Button className='btn btn-block btn-success'><i className="fas fa-file-signature" onClick={() => viewModel.actionSgin(viewModel.id)}></i> ลงนามเอกสาร</Button>
+                                        <Button className='btn btn-block btn-success'><i className="fas fa-file-signature" onClick={() => viewModel.actionSgin(viewModel.doc_user.data?.data.develop_id!)}></i> ลงนามเอกสาร</Button>
                                 }
 
                                 <div style={{ marginBottom: `1%` }}></div>

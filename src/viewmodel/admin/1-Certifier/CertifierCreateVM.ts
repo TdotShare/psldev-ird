@@ -28,14 +28,15 @@ export default function CertifierCreateVM() {
         event.preventDefault();
         const formdata = new FormData(event.currentTarget);
 
-        if (!formdata.get('certifier_user_uid') || !formdata.get('certifier_level')) {
+        if (!formdata.get('certifier_user_uid') || !formdata.get('certifier_level') || !formdata.get('certifier_position')) {
             exportedSwal.actionInfo('กรุณากรอกข้อมูลให้ครบ !')
             return
         }
 
         let data = {
             certifier_user_uid : formdata.get('certifier_user_uid'),
-            certifier_level : formdata.get('certifier_level')
+            certifier_level : formdata.get('certifier_level'),
+            certifier_position : formdata.get('certifier_position')
         }
 
         let res  = await exportedAPICertifier.getCertifierCreate(data , user.token)

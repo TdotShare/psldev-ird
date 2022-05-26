@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API } from "../../config/api";
-import { APIDevelop_data, APIDevelop_first_data } from "../../model/Develop";
+import { APIDevelop_data, APIDevelop_first_data, APIDevelop_page_data } from "../../model/Develop";
 import { APITypeDevelop_data } from "../../model/TypeDevelop";
 
 
@@ -35,7 +35,7 @@ const getDevelopAll =async (token : String) => {
 }
 
 const getDevelopHistory =async (token : String) => {
-    const res = await axios.get<APIDevelop_data>(`${API}/user/develop/get/history` , {
+    const res = await axios.get<APIDevelop_page_data>(`${API}/user/develop/get/history` , {
         headers: {
             'Authorization': `Bearer ${token}`
         },

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useQuery, useQueryClient } from "react-query"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { APIDevelop_data } from "../../model/Develop"
+import { APIDevelop_data, APIDevelop_page_data } from "../../model/Develop"
 import { RootState } from "../../store/ConfigureStore"
 import exportedAPIDevelop from "../../utils/api/develop"
 import { routerPath } from "../../utils/routerpath"
@@ -12,6 +12,8 @@ import exportedSwal from "../../utils/swal"
 export default function DocmeVM() {
 
     const queryClient = useQueryClient()
+
+    const [page, setPage] = useState(0)
 
     const user = useSelector((state: RootState) => state.user.data)
 
@@ -25,7 +27,7 @@ export default function DocmeVM() {
 
 
     const query_develop_verify_data = useQuery<APIDevelop_data, Error>('getDevelop', async () => exportedAPIDevelop.getDevelopAll(user.token))
-    const query_develop_history_data = useQuery<APIDevelop_data, Error>('getDevelopHistory', async () => exportedAPIDevelop.getDevelopHistory(user.token))
+    const query_develop_history_data = useQuery<APIDevelop_page_data, Error>('getDevelopHistory', async () => exportedAPIDevelop.getDevelopHistory(user.token))
 
 
     const actionCancel = async (id: number) => {
@@ -51,7 +53,10 @@ export default function DocmeVM() {
         user,
         query_develop_verify_data,
         query_develop_history_data,
-        actionCancel
+        actionCancel,
+        page,
+        setPage
+
     }
 
 
