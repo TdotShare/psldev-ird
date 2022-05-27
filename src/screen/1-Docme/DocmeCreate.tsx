@@ -9,6 +9,7 @@ import DocmeCreateVM from '../../viewmodel/1-DocMe/DocmeCreateVM'
 
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from '@amir04lm26/react-modern-calendar-date-picker';
+import SginExcuse from '../../components/SginExcuse '
 
 function DocmeCreate() {
 
@@ -29,11 +30,7 @@ function DocmeCreate() {
                     {
                         viewModel.user.user_sign_status === 0 ?
 
-                            <div className="callout callout-warning">
-                                <h5>ผู้ใช้งาน {viewModel.user.user_firstname_th} {viewModel.user.user_lastname_th} ยังไม่มีลายเซ็นดิจิทัลอยู่ในระบบ !</h5>
-                                <p>หากมีความประสงค์อัปโหลด ลายเซ็นดิจิทัล (Digital Signature) โปรด <Link to={routerPath.Signature}>คลิก</Link></p>
-                                <b>หากไม่มี ลายเซ็นดิจิทัล ระบบจะใช้ชื่อจริงและนามสกุลของคุณในการลงนามเอกสารแทน !</b>
-                            </div>
+                            <SginExcuse fullname={`${viewModel.user.user_firstname_th} ${viewModel.user.user_lastname_th}`} />
 
 
                             :
@@ -233,7 +230,7 @@ function DocmeCreate() {
                                 รายละเอียดการไปศึกษา ฝึกอบรม ประชุม สัมมนา ฯลฯ ให้เขียนรายละเอียดโดยบรรยายสิ่งที่ได้สังเกตรู้เห็น หรือได้รับถ่ายทอดมาให้ชัดเจน
                             </div>
                             <div className='card-body'>
-                                <textarea className="form-control"  maxLength={50} name='develop_detail' rows={3}></textarea>
+                                <textarea className="form-control" maxLength={50} name='develop_detail' rows={3}></textarea>
                             </div>
                         </div>
 
@@ -268,7 +265,7 @@ function DocmeCreate() {
                                                     <option value={""}>กรุณาเลือกผู้รับรองเอกสาร</option>
                                                     {
                                                         viewModel.query_certifier1st_data.data?.data.map((el, index) => (
-                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid} ({el.user_prename}{el.user_firstname_th} {el.user_lastname_th})</option>
+                                                            <option key={index} value={el.certifier_user_uid}>{el.certifier_user_uid} {el.user_uid ? `(${el.user_prename}${el.user_firstname_th} ${el.user_lastname_th})` : ""}</option>
                                                         ))
                                                     }
                                                 </select>
@@ -321,8 +318,7 @@ function DocmeCreate() {
 
 
 
-                        <Button className='btn btn-block btn-success'>สร้างแบบรายการ</Button>
-
+                        <Button className='btn btn-block btn-success' disabled={viewModel.user.user_sign_status === 1 ? false : true} >สร้างแบบรายการ</Button>
 
                         <div style={{ marginBottom: '1%' }}></div>
 

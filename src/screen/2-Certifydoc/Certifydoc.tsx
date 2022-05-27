@@ -4,7 +4,7 @@ import Button from '../../components/Button'
 import ContentHeader from '../../components/content-header/ContentHeader'
 import LoadingData from '../../components/LoadingData'
 import Pagination from '../../components/Pagination'
-import { API } from '../../config/api'
+import SginExcuse from '../../components/SginExcuse '
 import { routerPath } from '../../utils/routerpath'
 import CertifydocVM from '../../viewmodel/2-Certifydoc/CertifydocVM'
 
@@ -33,7 +33,17 @@ function Certifydoc() {
             <section className="content">
                 <div className="container-fluid">
 
+                    {
+                        viewModel.user.user_sign_status === 0 ?
 
+                            <SginExcuse fullname={`${viewModel.user.user_firstname_th} ${viewModel.user.user_lastname_th}`} />
+
+                            :
+
+                            <></>
+
+
+                    }
 
                     <div style={{ paddingBottom: '1%' }}></div>
 
@@ -76,7 +86,7 @@ function Certifydoc() {
                                                                 <td>{el.develop_number}</td>
                                                                 <td>{el.develop_sdete} - {el.develop_edete}</td>
                                                                 <td>{el.sign_certifier_uid}</td>
-                                                                <td><Link to={`${routerPath.CertifyDoc}/update/${el.develop_id}`} ><Button className='btn btn-primary btn-block'><i className="fas fa-user-check"></i> ตรวจสอบเอกสาร</Button></Link></td>
+                                                                <td><Link to={`${routerPath.CertifyDoc}/update/${el.develop_id}`} ><Button type='button' className='btn btn-primary btn-block' disabled={viewModel.user.user_sign_status === 1 ? false : true} ><i className="fas fa-user-check"></i> ตรวจสอบเอกสาร</Button></Link></td>
                                                             </tr>
                                                         ))
                                                     }

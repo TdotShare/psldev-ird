@@ -28,7 +28,7 @@ export default function CertifierCreateVM() {
         event.preventDefault();
         const formdata = new FormData(event.currentTarget);
 
-        if (!formdata.get('certifier_user_uid') || !formdata.get('certifier_level') || !formdata.get('certifier_position')) {
+        if (!formdata.get('certifier_user_uid') || !formdata.get('certifier_level') || !formdata.get('certifier_title') || !formdata.get('certifier_position')) {
             exportedSwal.actionInfo('กรุณากรอกข้อมูลให้ครบ !')
             return
         }
@@ -36,6 +36,7 @@ export default function CertifierCreateVM() {
         let data = {
             certifier_user_uid : formdata.get('certifier_user_uid'),
             certifier_level : formdata.get('certifier_level'),
+            certifier_title : formdata.get('certifier_title'),
             certifier_position : formdata.get('certifier_position')
         }
 

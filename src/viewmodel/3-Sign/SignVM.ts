@@ -34,19 +34,7 @@ export default function SignVM() {
 
 
     const actionPreviewSign = async (file: String) => {
-
-
-        const res = await exportedAPISign.previewSign(file, user.token)
-
-        if (res.bypass) {
-            //console.log(res.data)
-            //window.open(`${PUBLIC_PATH}/api/user/sign/open_signature/${res.data}`)
-        } else {
-
-        }
-
-
-
+        //const res = await exportedAPISign.previewSign(file, user.token)
     }
 
     const submitFormSgin = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -90,7 +78,6 @@ export default function SignVM() {
                 token: res.data.token,
                 role: res.data.role,
             }))
-
 
             navigate(routerPath.DocMe)
 

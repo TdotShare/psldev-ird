@@ -23,6 +23,7 @@ export default function LoginVM() {
   React.useEffect(() => {
 
     if (splitLocation.includes(`callback`)) {
+      exportedSwal.actionSuccess(`กรุณารอสักครู่ระบบกำลังตรวจสอบการ login !`)
       dataLoginRmuti()
     }else{
       dispatch(deleteUser())
@@ -34,18 +35,18 @@ export default function LoginVM() {
 
   const actionGoToRmutiLogin = () => {
     window.location.href = `https://mis-ird.rmuti.ac.th/sso/auth/login?url=${HOST}/callback`
+    //window.location.href = `https://api.rmuti.ac.th/sso/oauth?sv=test&redirect_uri=${HOST}`
   }
-
-
+  
   const dataLoginRmuti = async () => {
 
-    const res = await exportedAPIAuthentication.getLoginTest()
+    const res = await exportedAPIAuthentication.getLogin()
 
     if (res.bypass) {
 
       let user = res.data
 
-      console.log(user)
+      //console.log(user)
 
         dispatch(addUser({
           user_id: user.user_id,
@@ -66,8 +67,8 @@ export default function LoginVM() {
       navigate(routerPath.DocMe)
 
     } else {
-      console.log(res)
-      //exportedSwal.actionInfo(res.message)
+      //console.log(res)
+      exportedSwal.actionInfo(res.message)
     }
 
   }

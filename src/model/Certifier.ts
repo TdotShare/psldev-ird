@@ -2,6 +2,7 @@ interface Certifier {
     certifier_id  : number;
     certifier_user_uid: string;
     certifier_level : number;
+    certifier_title : string;
     certifier_position : string;
     certifier_status : number;
     certifier_create_at : string;

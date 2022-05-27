@@ -49,6 +49,7 @@ function Certifier() {
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">ชื่อ uid</th>
+                                                    <th scope="col">คำนำหน้า</th>
                                                     <th scope="col">ตำแหน่ง</th>
                                                     <th scope="col">ระดับ</th>
                                                     <th scope="col">สถานะ</th>
@@ -62,6 +63,7 @@ function Certifier() {
                                                         <tr key={index}>
                                                             <th scope="row">{index + 1}</th>
                                                             <td>{el.certifier_user_uid}</td>
+                                                            <td>{el.certifier_title}</td>
                                                             <td>{el.certifier_position}</td>
                                                             <td>{el.certifier_level}</td>
                                                             <td>{el.certifier_status === 1 ? "เปิดการใช้งาน" : 'ปิดการใช้งาน'}</td>

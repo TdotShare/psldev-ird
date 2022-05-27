@@ -1,11 +1,6 @@
 import axios from "axios";
 import { API } from "../../config/api";
-import { APICertifier_data } from "../../model/Certifier";
 import { APIAccount_data } from "../../model/User";
-
-
-
-
 
 
 

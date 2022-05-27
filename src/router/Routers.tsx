@@ -42,7 +42,7 @@ function Routers() {
     const data = useSelector((state: RootState) => state.user)
 
     return (
-        <BrowserRouter  >
+        <BrowserRouter basename="/psldev" >
             <Routes>
                 <Route path="/login" element={<AuthLogin />} />
                 <Route path="/login/callback" element={<AuthLogin />} />

@@ -18,7 +18,7 @@ const Logout = () => {
     dispatch(deleteUser())
     dispatch(setLoginfail())
     queryClient.invalidateQueries()
-    //window.location.href = `https://mis-ird.rmuti.ac.th/sso/auth/logout?url=${HOST}`
+    window.location.href = `https://mis-ird.rmuti.ac.th/sso/auth/logout?url=${HOST}`
     // eslint-disable-next-line 
   }, [])
 

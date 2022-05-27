@@ -35,6 +35,10 @@ function CertifierCreate() {
                                         <input type="text" name='certifier_user_uid'  className="form-control" placeholder='jirayu.co' />
                                     </div>
                                     <div className="form-group col-md">
+                                        <label >คำนำหน้า</label>
+                                        <input type="text" name='certifier_title'  className="form-control"  />
+                                    </div>
+                                    <div className="form-group col-md">
                                         <label >ชื่อตำแหน่ง</label>
                                         <input type="text" name='certifier_position'  className="form-control"  />
                                     </div>
@@ -44,7 +48,7 @@ function CertifierCreate() {
                                             <option value={""}>กรุณาเลือกระดับ</option>
                                             <option value={1}>1 (หัวหน้าสำนักงาน)</option>
                                             <option value={2}>2 (หัวหน้าแต่ละฝ่าย)</option>
-                                            <option value={3}>2 (ผู้อำนวยการ)</option>
+                                            <option value={3}>3 (ผู้อำนวยการ)</option>
                                         </select>
                                     </div>
                                 </div>

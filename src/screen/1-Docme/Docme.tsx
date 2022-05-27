@@ -4,6 +4,7 @@ import Button from '../../components/Button'
 import ContentHeader from '../../components/content-header/ContentHeader'
 import LoadingData from '../../components/LoadingData'
 import Pagination from '../../components/Pagination'
+import SginExcuse from '../../components/SginExcuse '
 import { API } from '../../config/api'
 import { routerPath } from '../../utils/routerpath'
 import DocmeVM from '../../viewmodel/1-DocMe/DocmeVM'
@@ -36,13 +37,8 @@ function Docme() {
                     {
                         viewModel.user.user_sign_status === 0 ?
 
-                            <div className="callout callout-warning">
-                                <h5>ผู้ใช้งาน {viewModel.user.user_firstname_th} {viewModel.user.user_lastname_th} ยังไม่มีลายเซ็นดิจิทัลอยู่ในระบบ !</h5>
-                                <p>หากมีความประสงค์อัปโหลด ลายเซ็นดิจิทัล (Digital Signature) โปรด <Link to={routerPath.Signature}>คลิก</Link></p>
-                                <b>หากไม่มี ลายเซ็นดิจิทัล ระบบจะใช้ชื่อจริงและนามสกุลของคุณในการลงนามเอกสารแทน !</b>
-                            </div>
-
-
+                            <SginExcuse fullname={`${viewModel.user.user_firstname_th} ${viewModel.user.user_lastname_th}`} />
+                            
                             :
 
                             <></>
@@ -51,7 +47,7 @@ function Docme() {
                     }
 
 
-                    <Link to={`${routerPath.DocMe}/create`}><Button className='btn btn-primary'>สร้างแบบรายงานการพัฒนาบุคคล</Button></Link>
+                    <Link to={`${routerPath.DocMe}/create`}><Button type='button' className='btn btn-primary' disabled={viewModel.user.user_sign_status === 1 ? false : true} >สร้างแบบรายงานการพัฒนาบุคคล</Button></Link>
 
 
                     <div style={{ paddingBottom: '1%' }}></div>
@@ -147,7 +143,7 @@ function Docme() {
                                                                 <td>{el.develop_title}</td>
                                                                 <td>{el.develop_number}</td>
                                                                 <td>{el.develop_sdete} - {el.develop_edete}</td>
-                                                                <td>{el.develop_status_name}</td>
+                                                                <td>{el.develop_status === 3 ? "ดำเนินการเสร็จสิน" : "ยกเลิกรายการ"}</td>
                                                                 <td><a href={`${API}/user/develop/document/${el.develop_id}?token=${viewModel.user.token}`} target={`_blank`} ><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></a></td>
                                                             </tr>
                                                         ))

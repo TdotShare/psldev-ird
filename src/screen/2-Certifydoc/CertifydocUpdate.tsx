@@ -183,7 +183,7 @@ function CertifydocUpdate() {
 
                                         :
 
-                                        <Button className='btn btn-block btn-success'><i className="fas fa-file-signature" onClick={() => viewModel.actionSgin(viewModel.doc_user.data?.data.develop_id!)}></i> ลงนามเอกสาร</Button>
+                                        <Button className='btn btn-block btn-success' onClick={() => viewModel.actionSgin(viewModel.doc_user.data?.data.develop_id!)} ><i className="fas fa-file-signature" ></i> ลงนามเอกสาร</Button>
                                 }
 
                                 <div style={{ marginBottom: `1%` }}></div>

@@ -1,22 +1,12 @@
 import React from 'react'
-import { Link, Navigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import ContentHeader from '../../components/content-header/ContentHeader'
-import LoadingData from '../../components/LoadingData'
-import { API } from '../../config/api'
 import SignVM from '../../viewmodel/3-Sign/SignVM'
 import SignatureCanvas from 'react-signature-canvas'
-import exportedSwal from '../../utils/swal'
-import { routerPath } from '../../utils/routerpath'
 
 function Sign() {
 
     const viewModel = SignVM()
-
-    if(viewModel.user.user_sign_status !== 0){
-        exportedSwal.actionInfo("คุณมี ลายเซ็นดิจิทัล อยู่ในระบบนี้อยู่แล้ว !")
-        return <Navigate to={routerPath.DocMe} />
-    }
 
     return (
         <div className="content-wrapper">
@@ -71,9 +61,9 @@ function Sign() {
 
                                     <div style={{ paddingBottom: '2%' }}></div>
 
-                                    <Button className='btn btn-block btn-info' onClick={() => viewModel.sigPad.clear()}  ><i className="far fa-trash-alt"></i> วาดลายเซ็นดิจิทัลใหม่</Button>
+                                    <Button type='button' className='btn btn-block btn-info' onClick={() => viewModel.sigPad.clear()}  ><i className="far fa-trash-alt"></i> วาดลายเซ็นดิจิทัลใหม่</Button>
 
-                                    <Button className='btn btn-block btn-info' onClick={() => viewModel.actionPreviewSign(viewModel.sigPad.getTrimmedCanvas().toDataURL('image/png'))} ><i className="far fa-file-word"></i> ดาวน์โหลดตัวอย่างลายเซ็นดิจิทัลบนเอกสาร</Button>
+                                    {/* <Button className='btn btn-block btn-info' onClick={() => viewModel.actionPreviewSign(viewModel.sigPad.getTrimmedCanvas().toDataURL('image/png'))} ><i className="far fa-file-word"></i> ดาวน์โหลดตัวอย่างลายเซ็นดิจิทัลบนเอกสาร</Button> */}
 
                                 </div>
                             </div>
@@ -110,7 +100,19 @@ function Sign() {
                                     </table>
                                 </div>
 
-                                <Button className='btn btn-block btn-success' disabled={viewModel.loading_btn}>บันทึกข้อมูล</Button>
+                                {
+                                    viewModel.user.user_sign_status === 0
+
+                                    ?
+
+                                    <Button className='btn btn-block btn-success' disabled={viewModel.loading_btn}>บันทึกข้อมูล</Button>
+
+                                    :
+
+                                    <></>
+                                }
+
+                     
 
                             </form>
 
