@@ -74,7 +74,7 @@ function CertifydocUpdate() {
                                         <div className='form-row'>
                                             <div className="form-group col-md">
                                                 <label >สังกัดสำนัก/สถาบัน/กอง</label>
-                                                <input type="text" className="form-control" readOnly />
+                                                <input type="text" className="form-control" defaultValue={`${viewModel.doc_user.data?.data.develop_op_agency}`} readOnly />
                                             </div>
 
 

@@ -72,7 +72,7 @@ function Certifydoc() {
                                                         <th scope="col">หัวข้อเรื่อง</th>
                                                         <th scope="col">ตามคำสั่ง/หนังสือ</th>
                                                         <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
-                                                        <th scope="col">สร้างโดย</th>
+                                                        <th scope="col">วันที่สร้างเอกสาร</th>
                                                         <th scope="col"></th>
                                                     </tr>
                                                 </thead>
@@ -85,7 +85,7 @@ function Certifydoc() {
                                                                 <td>{el.develop_title}</td>
                                                                 <td>{el.develop_number}</td>
                                                                 <td>{el.develop_sdete} - {el.develop_edete}</td>
-                                                                <td>{el.sign_certifier_uid}</td>
+                                                                <td>{el.develop_create_at}</td>
                                                                 <td><Link to={`${routerPath.CertifyDoc}/update/${el.develop_id}`} ><Button type='button' className='btn btn-primary btn-block' disabled={viewModel.user.user_sign_status === 1 ? false : true} ><i className="fas fa-user-check"></i> ตรวจสอบเอกสาร</Button></Link></td>
                                                             </tr>
                                                         ))

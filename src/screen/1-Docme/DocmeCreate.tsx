@@ -78,9 +78,9 @@ function DocmeCreate() {
                                             :
 
                                             <div className="form-group col-md">
-                                                <label >ประเภทการไปพัฒนาบุคลากร</label>
+                                                <label >ประเภทการไปราชการ</label>
                                                 <select name='develop_type_go_id' className="custom-select" defaultValue={""} >
-                                                    <option value={""}>ระบุประเภทการรับพัฒนาบุคลากร</option>
+                                                    <option value={""}>ระบุประเภทการไปราชการ</option>
                                                     {
                                                         viewModel.query_typedevelop_data.data?.data.map((el) => (
                                                             <option key={el.type_develop_id} value={el.type_develop_id}>{el.type_develop_name}</option>
@@ -112,9 +112,9 @@ function DocmeCreate() {
                                             :
 
                                             <div className="form-group col-md">
-                                                <label >ประเภทการรับพัฒนาบุคลากร</label>
+                                                <label >ประเภทการพัฒนาบุคลากร</label>
                                                 <select className="custom-select" name='develop_type_admit_id' defaultValue={""} >
-                                                    <option value={""}>ระบุประเภทการรับพัฒนาบุคลากร</option>
+                                                    <option value={""}>ระบุประเภทการพัฒนาบุคลากร</option>
                                                     {
                                                         viewModel.query_typedevelop_data.data?.data.map((el, index) => (
                                                             <option key={index} value={el.type_develop_id}>{el.type_develop_name}</option>
@@ -280,7 +280,7 @@ function DocmeCreate() {
                                             :
 
                                             <div className="form-group col-md">
-                                                <label >เลือกผู้บังคับบัญชาระดับหัวหน้าฝ่าย</label>
+                                                <label >เลือกผู้บังคับบัญชารองผู้อำนวยการฝ่าย</label>
                                                 <select className="custom-select" name='sign_certifier_2st_uid' defaultValue={""} >
                                                     <option value={""}>กรุณาเลือกผู้รับรองเอกสาร</option>
                                                     {

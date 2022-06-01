@@ -39,22 +39,18 @@ function Sign() {
                             สร้าง {viewModel.title} ของคุณ
                         </div>
                         <div className='card-body'>
-
                             <div className='row'>
                                 <div className='col'>
-
-
                                     <div style={{ textAlign: 'center' }}>
                                         <div className='border border-dark' style={{ width: 220, margin: "auto", }}>
                                             <SignatureCanvas
-                                                penColor='black'
+                                                penColor='#0091ff'
                                                 canvasProps={{ width: 220, height: 150, className: 'sigCanvas' }}
                                                 ref={(ref) => { viewModel.setSigPad(ref) }}
                                                 onEnd={() => viewModel.setSigTouch(viewModel.sigTouch + 1)}
                                             />
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div className='col'>

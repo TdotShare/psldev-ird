@@ -14,6 +14,8 @@ interface DocinBox {
     develop_feedback : string;
     develop_status : number;
     develop_status_name : string;
+    develop_create_at : string;
+    develop_update_at : string;
     sign_id : number;
     sign_develop_id   : number;
     sign_certifier_uid: number;

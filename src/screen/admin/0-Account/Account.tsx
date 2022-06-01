@@ -69,7 +69,7 @@ function Account() {
                                                                 <th scope="row">{Number(viewModel.qe_account_data.data?.data.from!) + index}</th>
                                                                 <td>{el.user_uid}</td>
                                                                 <td>{el.user_email}</td>
-                                                                <td>{`${el.user_firstname_en} ${el.user_lastname_th}`}</td>
+                                                                <td>{`${el.user_firstname_th} ${el.user_lastname_th}`}</td>
                                                                 <td>{`${el.user_firstname_en} ${el.user_lastname_en}`}</td>
                                                                 <td>{el.user_department}</td>
                                                                 <td>{el.user_faculty}</td>
