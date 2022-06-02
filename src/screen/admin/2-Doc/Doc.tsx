@@ -19,17 +19,62 @@ function Doc() {
             <section className="content">
                 <div className="container-fluid">
 
-
-
                     <div style={{ paddingBottom: '1%' }}></div>
 
                     <div className='card'>
                         <div className='card-body'>
-                            <div className="alert alert-success" role="alert">รอการอัปเดตครั้งต่อไป !</div>
+
+
+                            <div className="form-row">
+
+
+                                <div className="form-group col-md">
+                                    <label >เลือกปี</label>
+                                    <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_num_year(Number(e.target.value)) }} defaultValue={0} >
+                                        <option value={0}>กรุณาเลือกปี</option>
+                                        <option value={2565}>2565</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div className="form-row">
+
+                                <div className="form-group col-md">
+                                    <label >เดือนที่เริ่มต้น</label>
+                                    <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_sMonth(Number(e.target.value)) }} defaultValue={0} >
+                                        {
+                                            viewModel.name_month.map((el, index) => (
+                                                <option key={index} value={index + 1}>{el}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div className="form-group col-md">
+                                    <label >เดือนที่สิ้นสุด</label>
+                                    <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_eMonth(Number(e.target.value)) }} defaultValue={0} >
+                                        {
+                                            viewModel.name_month.map((el, index) => (
+                                                <option key={index} value={index + 1}>{el}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <button onClick={() => viewModel.action_download_chk_persona()} className='btn btn-block btn-primary'>ตรวจสอบจำนวนการเข้าอบรบแต่ละคน (Excel)</button>
+                                </div>
+                                <div className='col-6'>
+                                    <button onClick={() => viewModel.action_download_doc()} className='btn btn-block btn-success'>ดาวน์โหลดเอกสารทั้งหมด (Word)</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-
 
                 </div>
             </section>
