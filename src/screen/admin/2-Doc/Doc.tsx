@@ -32,7 +32,7 @@ function Doc() {
                                     <label >เลือกปี</label>
                                     <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_num_year(Number(e.target.value)) }} defaultValue={0} >
                                         <option value={0}>กรุณาเลือกปี</option>
-                                        <option value={2565}>2565</option>
+                                        <option value={2022}>2565</option>
                                     </select>
                                 </div>
 
@@ -43,6 +43,7 @@ function Doc() {
                                 <div className="form-group col-md">
                                     <label >เดือนที่เริ่มต้น</label>
                                     <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_sMonth(Number(e.target.value)) }} defaultValue={0} >
+                                        <option value={0}>กรุณาเลือกเดือน</option>
                                         {
                                             viewModel.name_month.map((el, index) => (
                                                 <option key={index} value={index + 1}>{el}</option>
@@ -53,6 +54,7 @@ function Doc() {
                                 <div className="form-group col-md">
                                     <label >เดือนที่สิ้นสุด</label>
                                     <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_eMonth(Number(e.target.value)) }} defaultValue={0} >
+                                        <option value={0}>กรุณาเลือกเดือน</option>
                                         {
                                             viewModel.name_month.map((el, index) => (
                                                 <option key={index} value={index + 1}>{el}</option>
