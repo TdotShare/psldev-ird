@@ -77,7 +77,7 @@ function Docme() {
                                                     <th scope="col">ระหว่างวันที่ - ถึงวันที่</th>
                                                     <th scope="col">สถานะ</th>
                                                     <th scope="col"></th>
-                                                    <th scope="col"></th>
+                                                    {/* <th scope="col"></th> */}
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
@@ -91,7 +91,7 @@ function Docme() {
                                                             <td>{el.develop_sdete} - {el.develop_edete}</td>
                                                             <td>{el.develop_status_name}</td>
                                                             <td><Link to={`${routerPath.DocMe}/update/${el.develop_id}`}><Button className='btn btn-primary btn-block' disabled={el.develop_status === 1 ? false : true} ><i className="fas fa-edit"></i>  แก้ไขข้อมูล</Button></Link></td>
-                                                            <td><a href={`${API}/user/develop/document/${el.develop_id}?token=${viewModel.user.token}`} target={`_blank`} ><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></a></td>
+                                                            {/* <td><a href={`${API}/user/develop/document/${el.develop_id}?token=${viewModel.user.token}`} target={`_blank`} ><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></a></td> */}
                                                             <td><Button onClick={() => viewModel.actionCancel(el.develop_id)} className='btn btn-danger btn-block' disabled={[0, 1].includes(el.develop_status) ? false : true}><i className="fas fa-ban"></i> ยกเลิกรายการ</Button></td>
                                                         </tr>
                                                     ))

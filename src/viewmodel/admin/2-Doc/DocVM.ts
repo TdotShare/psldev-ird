@@ -27,6 +27,19 @@ export default function DocVM() {
     const [sMonth, set_sMonth] = useState<number>(0)
     const [eMonth, set_eMonth] = useState<number>(0)
 
+    const generateArrayOfYears = () => {
+        const d = new Date();
+        let year = 2022
+        let nows =  d.getFullYear()
+        let data = [];
+    
+        for(let i = year; i <= nows; i++){
+            data.push(i)
+        }
+    
+        return data
+    }
+
     const action_download_chk_persona = () => {
 
         if (number_year === 0) {
@@ -110,7 +123,8 @@ export default function DocVM() {
         set_sMonth,
         set_eMonth,
         action_download_chk_persona,
-        action_download_doc
+        action_download_doc,
+        generateArrayOfYears
     }
 
 

@@ -32,7 +32,11 @@ function Doc() {
                                     <label >เลือกปี</label>
                                     <select className="custom-select" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { viewModel.set_num_year(Number(e.target.value)) }} defaultValue={0} >
                                         <option value={0}>กรุณาเลือกปี</option>
-                                        <option value={2022}>2565</option>
+                                        {
+                                            viewModel.generateArrayOfYears().map(el => (
+                                                <option value={el}>{el + 543}</option>
+                                            ))
+                                        }
                                     </select>
                                 </div>
 
