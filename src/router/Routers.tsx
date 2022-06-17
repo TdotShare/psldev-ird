@@ -64,8 +64,6 @@ function Routers() {
                         <Route path="*" element={<UserAuthen children={<Error404 />} />} />
                     </Route>
                 </Route>
-
-
             </Routes>
 
         </BrowserRouter>

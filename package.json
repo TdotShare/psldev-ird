@@ -2,7 +2,7 @@
   "name": "psldev-ird",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://admin.ird.rmuti.ac.th/psldev",
+  "homepage": "https://mis-ird.rmuti.ac.th/psldev",
   "dependencies": {
     "@amir04lm26/react-modern-calendar-date-picker": "^1.0.1",
     "@reduxjs/toolkit": "^1.8.1",

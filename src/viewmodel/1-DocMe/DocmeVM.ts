@@ -39,8 +39,7 @@ export default function DocmeVM() {
 
             if (res.bypass) {
                 exportedSwal.actionSuccess("ยกเลิกรายการที่เลือกเรียบร้อย !")
-                queryClient.invalidateQueries('getDevelop')
-                queryClient.invalidateQueries('getDevelopHistory')
+                queryClient.invalidateQueries()
             } else {
                 exportedSwal.actionInfo('ไม่สามารถยกเลิกข้อมูลได้ กรุณาติดต่อเจ้าหน้าที่ !')
             }
