@@ -1,5 +1,5 @@
-export const API  =  process.env.NODE_ENV === 'production' ? "https://admin.ird.rmuti.ac.th/service/psldev/public/api" : "http://127.0.0.1:8000/api"
-//export const API  =  process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/service/psldev/public/api" : "http://127.0.0.1:8000/api"
+export const API  =  process.env.NODE_ENV === 'production' ? "https://admin.ird.rmuti.ac.th/service/psldev/api" : "http://127.0.0.1:8000/api"
+//export const API  =  process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/service/psldev/api" : "http://127.0.0.1:8000/api"
 
 
 
