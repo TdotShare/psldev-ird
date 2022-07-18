@@ -40,7 +40,8 @@ export default function LoginVM() {
   
   const dataLoginRmuti = async () => {
 
-    const res = await exportedAPIAuthentication.getLogin()
+    const res = await exportedAPIAuthentication.getLogin() 
+    //const res = await exportedAPIAuthentication.getLoginTest()
 
     if (res.bypass) {
 

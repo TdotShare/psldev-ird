@@ -18,8 +18,12 @@ export default function CertifydocUpdateVM() {
     const { id }: any = useParams();
 
     const user = useSelector((state: RootState) => state.user.data)
-
-
+    
+    const [sign_note_text , set_sign_note] = useState<String>("")
+    
+    const sign_note_onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        set_sign_note(e.currentTarget.value);
+    }
     const [values] = useState({
         title: "กล่องเอกสาร",
         breadcrumb: [
@@ -35,7 +39,8 @@ export default function CertifydocUpdateVM() {
     const actionSgin = async (id :number) => {
 
         let data = {
-            develop_id : id
+            develop_id : id,
+            sign_note : sign_note_text ? sign_note_text : ""
         }
 
         const res = await exportedAPIDocinbox.updateDoc(data, user.token)
@@ -59,7 +64,6 @@ export default function CertifydocUpdateVM() {
             exportedSwal.actionInfo(res.message)
         }
 
-
     }
 
     return {
@@ -67,6 +71,7 @@ export default function CertifydocUpdateVM() {
         user,
         doc_user,
         queryClient,
+        sign_note_onChange,
         actionSgin,
         actionEditDoc,
         id

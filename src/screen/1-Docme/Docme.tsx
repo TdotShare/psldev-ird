@@ -151,7 +151,7 @@ function Docme() {
                                                                 <td>{el.develop_title}</td>
                                                                 <td>{el.develop_number}</td>
                                                                 <td>{el.develop_sdete} - {el.develop_edete}</td>
-                                                                <td>{el.develop_status === 3 ? "ดำเนินการเสร็จสิน" : "ยกเลิกรายการ"}</td>
+                                                                <td className={el.develop_status === 3 ? 'bg-success' : 'bg-danger' }>{el.develop_status === 3 ? "ดำเนินการเสร็จสิน" : "ยกเลิกรายการ"}</td>
                                                                 <td><a href={`${API}/user/develop/document/${el.develop_id}?token=${viewModel.user.token}`} target={`_blank`} ><Button className='btn btn-primary btn-block'><i className="fas fa-download"></i>  ดาวน์โหลดเอกสาร</Button></a></td>
                                                             </tr>
                                                         ))

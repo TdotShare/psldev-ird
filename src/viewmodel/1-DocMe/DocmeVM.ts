@@ -29,7 +29,6 @@ export default function DocmeVM() {
     const query_develop_verify_data = useQuery<APIDevelop_data, Error>('getDevelop', async () => exportedAPIDevelop.getDevelopAll(user.token))
     const query_develop_history_data = useQuery<APIDevelop_page_data, Error>('getDevelopHistory', async () => exportedAPIDevelop.getDevelopHistory(user.token))
 
-
     const actionCancel = async (id: number) => {
 
         let confirmDelete = await exportedSwal.confirmDelete("ที่เลือก")

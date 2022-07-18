@@ -173,6 +173,15 @@ function CertifydocUpdate() {
                                     </div>
                                 </div>
 
+                                <div className='card'>
+                                    <div className='card-header'>
+                                        หมายเหตุ
+                                    </div>
+                                    <div className='card-body'>
+                                        <textarea className="form-control" onChange={viewModel.sign_note_onChange}  name='sign_note' rows={3} ></textarea>
+                                    </div>
+                                </div>
+
                                 {
                                     viewModel.doc_user.data?.data.certifier_level === 1 ?
 
